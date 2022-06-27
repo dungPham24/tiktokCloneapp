@@ -2,18 +2,21 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
-import imageCover from 'assets/image/download.png';
+import ImageCustom from 'components/ImageCustom';
 
-const AccountItem = () => {
+const AccountItem = ({ data }) => {
     return (
         <Wrapper>
-            <img className="avatar" src={imageCover} alt="Hoaa" />
+            <ImageCustom className="avatar" src={data.avatar} alt="Hoaa" />
             <div className="info">
                 <div className="name">
-                    <span>nguyen van a</span>
-                    <FontAwesomeIcon className="check" icon={faCheckCircle} />
+                    <span>{data.full_name}</span>
+                    <FontAwesomeIcon
+                        className="check"
+                        icon={data.tick ? faCheckCircle : ''}
+                    />
                 </div>
-                <div className="username"> nguyen van a</div>
+                <div className="username">{data.nickname}</div>
             </div>
         </Wrapper>
     );
